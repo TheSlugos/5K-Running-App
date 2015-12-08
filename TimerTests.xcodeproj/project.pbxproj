@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		290E24671C166161004CAC00 /* Phase.m in Sources */ = {isa = PBXBuildFile; fileRef = 290E24661C166161004CAC00 /* Phase.m */; };
 		296E9E891C1539EB007DC032 /* stage_durations.txt in Resources */ = {isa = PBXBuildFile; fileRef = 296E9E881C1539EB007DC032 /* stage_durations.txt */; };
-		29794A6E1C03250000BCE635 /* Phase.m in Sources */ = {isa = PBXBuildFile; fileRef = 29794A6D1C03250000BCE635 /* Phase.m */; };
 		29794A711C03277900BCE635 /* Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = 29794A701C03277900BCE635 /* Workout.m */; };
 		29B5D0231B5BBC7600AA35F7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B5D0221B5BBC7600AA35F7 /* main.m */; };
 		29B5D0261B5BBC7600AA35F7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B5D0251B5BBC7600AA35F7 /* AppDelegate.m */; };
@@ -32,9 +32,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		290E24651C166161004CAC00 /* Phase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Phase.h; sourceTree = "<group>"; };
+		290E24661C166161004CAC00 /* Phase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Phase.m; sourceTree = "<group>"; };
 		296E9E881C1539EB007DC032 /* stage_durations.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stage_durations.txt; sourceTree = "<group>"; };
-		29794A6C1C03250000BCE635 /* Phase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Phase.h; path = ../Phase.h; sourceTree = "<group>"; };
-		29794A6D1C03250000BCE635 /* Phase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Phase.m; path = ../Phase.m; sourceTree = "<group>"; };
 		29794A6F1C03277900BCE635 /* Workout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Workout.h; sourceTree = "<group>"; };
 		29794A701C03277900BCE635 /* Workout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Workout.m; sourceTree = "<group>"; };
 		29B5D01D1B5BBC7600AA35F7 /* TimerTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimerTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,10 +93,10 @@
 		29B5D01F1B5BBC7600AA35F7 /* TimerTests */ = {
 			isa = PBXGroup;
 			children = (
+				290E24651C166161004CAC00 /* Phase.h */,
+				290E24661C166161004CAC00 /* Phase.m */,
 				29794A6F1C03277900BCE635 /* Workout.h */,
 				29794A701C03277900BCE635 /* Workout.m */,
-				29794A6C1C03250000BCE635 /* Phase.h */,
-				29794A6D1C03250000BCE635 /* Phase.m */,
 				29B5D0241B5BBC7600AA35F7 /* AppDelegate.h */,
 				29B5D0251B5BBC7600AA35F7 /* AppDelegate.m */,
 				29B5D0271B5BBC7600AA35F7 /* ViewController.h */,
@@ -242,11 +242,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				290E24671C166161004CAC00 /* Phase.m in Sources */,
 				29B5D0291B5BBC7600AA35F7 /* ViewController.m in Sources */,
 				29B5D0261B5BBC7600AA35F7 /* AppDelegate.m in Sources */,
 				29794A711C03277900BCE635 /* Workout.m in Sources */,
 				29B5D0231B5BBC7600AA35F7 /* main.m in Sources */,
-				29794A6E1C03250000BCE635 /* Phase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
