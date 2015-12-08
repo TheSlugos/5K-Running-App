@@ -32,20 +32,11 @@
 @property (nonatomic) SystemSoundID sndTick;
 @property (nonatomic) SystemSoundID sndBuzzer;
 
-// Workouts
-@property (strong, nonatomic) NSMutableArray<Workout*>* workouts;
-
-// Today's workout
-@property (nonatomic) int thisWorkoutIndex;
-@property (strong, nonatomic) Workout* thisWorkout;
-
 // methods
 - (IBAction)btnTimer_Click:(UIButton *)sender;
 - (IBAction)btnStop_Click:(UIButton *)sender;
 -(void)updateTimerLabel:(NSTimer*)theTimer;
-//-(void)setTimerText;
 -(void)resetTimer;
--(void)readExerciseData;
 -(NSString*)timeAsString:(int)time;
 
 @end
@@ -56,12 +47,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    // Create workouts
-    _workouts = [[NSMutableArray alloc] initWithCapacity:1];
-    
-    // Read exercise data from the file
-    [self readExerciseData];
-    
     // setup sounds
     NSString* sndPath = [[NSBundle mainBundle] pathForResource:@"tick" ofType:@"wav"];
     NSURL* sndURL = [NSURL fileURLWithPath:sndPath];
@@ -70,12 +55,6 @@
     sndPath = [[NSBundle mainBundle] pathForResource:@"buzzer" ofType:@"wav"];
     sndURL = [NSURL fileURLWithPath:sndPath];
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)sndURL, &_sndBuzzer);
-    
-    // set the current workout
-    // this should come from the workout selected in the list view that
-    // needs to be implemented
-    _thisWorkoutIndex = 0;
-    _thisWorkout = [_workouts objectAtIndex:_thisWorkoutIndex];
     
     [self resetTimer];
 }
@@ -228,63 +207,6 @@
     long seconds = time % 60;
     
     return [NSString stringWithFormat:@"%02ld:%02ld", (long)minutes, (long)seconds];
-}
-
--(void)readExerciseData
-{
-    // get url of file
-    NSURL* fileLocation = [[NSBundle mainBundle] URLForResource: @"stage_durations" withExtension:@"txt"];
-    
-    // get data from the file
-    NSString *fileContent = [NSString stringWithContentsOfURL: fileLocation encoding: NSUTF8StringEncoding error: nil];
-    
-    // Split data read from file
-    NSArray* fileLines = [fileContent componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
-    
-    // Separate phase titles
-    NSArray* titles = [[fileLines objectAtIndex:0] componentsSeparatedByCharactersInSet: [NSCharacterSet characterSetWithCharactersInString:@","]];
-    
-    // Get phase time data for each workout session
-    NSUInteger lineCount = [fileLines count];
-    for (NSUInteger index = 1; index < lineCount; index++)
-    {
-        // extract the individual times for this workout session
-        NSArray* times = [[fileLines objectAtIndex:index] componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@","]];
-
-        // workout object to store current workout
-        Workout* workout = [[Workout alloc] init];
-        
-        // get the title for this phase
-        NSUInteger phases = [times count];
-        for (NSUInteger i = 0; i < phases; i++) {
-
-            NSString* phaseTitle;
-            
-            if ( i == 0 )
-            {
-                // Warm up
-                phaseTitle = [NSString stringWithString:[titles objectAtIndex:0]];
-            }
-            else if ( i == phases - 1 )
-            {
-                // Cool Down
-                phaseTitle = [NSString stringWithString:[titles objectAtIndex:([titles count] - 1)]];
-            }
-            else
-            {
-                // i % 2 = 0 == Run, i % 2 = 1 == Walk
-                phaseTitle = [NSString stringWithString:[titles objectAtIndex: (i % 2) + 1]];
-            }
-            
-            int phaseDuration = [[times objectAtIndex:i] intValue];
-            [workout addWorkout:phaseTitle withTime:phaseDuration];
-        }
-        
-        // Workout should have all phases added, store this workout
-        [_workouts addObject:workout];
-    }
-    
-    NSLog(@"Data read from file");
 }
 
 @end

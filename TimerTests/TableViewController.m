@@ -8,6 +8,7 @@
 
 #import "TableViewController.h"
 #import "Workout.h"
+#import "ViewController.h"
 
 #define kSections 1
 
@@ -66,9 +67,6 @@
     return cell;
 }
 
--(NSString*)tableView:(UITableView*)tableView titleForHeaderInSections:(NSInteger)section{
-    return  @"Choose an exercise day";
-}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -112,6 +110,12 @@
     if ([segue.identifier isEqualToString:@"showExerciseDetail"]) {
         NSIndexPath* indexPath = [self.tableView indexPathForCell:sender];
         NSLog(@"Sending cell is %ld",indexPath.row);
+        
+        // get the receiving view controller
+        ViewController* exerciseView = (ViewController*)[segue destinationViewController];
+        
+        // Set the current workout to the one selected
+        exerciseView.thisWorkout = [_workouts objectAtIndex:indexPath.row];
     }
 }
 
