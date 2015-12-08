@@ -216,14 +216,6 @@
     
 }
 
-//-(void)setTimerText{
-//    // display the label
-//    NSInteger minutes = _timerSeconds / 60;
-//    NSInteger seconds = _timerSeconds % 60;
-//    
-//    _lblTimer.text = [NSString stringWithFormat:@"%02ld:%02ld", (long)minutes, (long)seconds];
-//}
-
 // timeAsString
 //
 // Description: converts seconds into a displayable string as mm:ss
@@ -292,7 +284,7 @@
         [_workouts addObject:workout];
     }
     
-//    NSLog(@"Data read from file");
+    NSLog(@"Data read from file");
 }
 
 @end

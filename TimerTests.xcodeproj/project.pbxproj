@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		290E24671C166161004CAC00 /* Phase.m in Sources */ = {isa = PBXBuildFile; fileRef = 290E24661C166161004CAC00 /* Phase.m */; };
+		290E246A1C16E246004CAC00 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 290E24691C16E246004CAC00 /* TableViewController.m */; };
 		296E9E891C1539EB007DC032 /* stage_durations.txt in Resources */ = {isa = PBXBuildFile; fileRef = 296E9E881C1539EB007DC032 /* stage_durations.txt */; };
 		29794A711C03277900BCE635 /* Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = 29794A701C03277900BCE635 /* Workout.m */; };
 		29B5D0231B5BBC7600AA35F7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B5D0221B5BBC7600AA35F7 /* main.m */; };
@@ -34,6 +35,8 @@
 /* Begin PBXFileReference section */
 		290E24651C166161004CAC00 /* Phase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Phase.h; sourceTree = "<group>"; };
 		290E24661C166161004CAC00 /* Phase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Phase.m; sourceTree = "<group>"; };
+		290E24681C16E246004CAC00 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		290E24691C16E246004CAC00 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		296E9E881C1539EB007DC032 /* stage_durations.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stage_durations.txt; sourceTree = "<group>"; };
 		29794A6F1C03277900BCE635 /* Workout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Workout.h; sourceTree = "<group>"; };
 		29794A701C03277900BCE635 /* Workout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Workout.m; sourceTree = "<group>"; };
@@ -102,6 +105,8 @@
 				29B5D0271B5BBC7600AA35F7 /* ViewController.h */,
 				29B5D0281B5BBC7600AA35F7 /* ViewController.m */,
 				29B5D02A1B5BBC7600AA35F7 /* Main.storyboard */,
+				290E24681C16E246004CAC00 /* TableViewController.h */,
+				290E24691C16E246004CAC00 /* TableViewController.m */,
 				29B5D02D1B5BBC7600AA35F7 /* Images.xcassets */,
 				29B5D02F1B5BBC7600AA35F7 /* LaunchScreen.xib */,
 				29B5D0201B5BBC7600AA35F7 /* Supporting Files */,
@@ -243,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				290E24671C166161004CAC00 /* Phase.m in Sources */,
+				290E246A1C16E246004CAC00 /* TableViewController.m in Sources */,
 				29B5D0291B5BBC7600AA35F7 /* ViewController.m in Sources */,
 				29B5D0261B5BBC7600AA35F7 /* AppDelegate.m in Sources */,
 				29794A711C03277900BCE635 /* Workout.m in Sources */,
