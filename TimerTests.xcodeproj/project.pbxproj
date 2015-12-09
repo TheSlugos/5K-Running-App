@@ -20,6 +20,7 @@
 		29B5D03D1B5BBC7600AA35F7 /* TimerTestsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B5D03C1B5BBC7600AA35F7 /* TimerTestsTests.m */; };
 		29B5D0471B5D077300AA35F7 /* tick.wav in Resources */ = {isa = PBXBuildFile; fileRef = 29B5D0461B5D077300AA35F7 /* tick.wav */; };
 		29B5D0491B5D0C6600AA35F7 /* buzzer.wav in Resources */ = {isa = PBXBuildFile; fileRef = 29B5D0481B5D0C6600AA35F7 /* buzzer.wav */; };
+		29C2B4CD1C182FFD0082D855 /* DataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29C2B4CC1C182FFD0082D855 /* DataController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,8 @@
 		29B5D03C1B5BBC7600AA35F7 /* TimerTestsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimerTestsTests.m; sourceTree = "<group>"; };
 		29B5D0461B5D077300AA35F7 /* tick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tick.wav; sourceTree = "<group>"; };
 		29B5D0481B5D0C6600AA35F7 /* buzzer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = buzzer.wav; sourceTree = "<group>"; };
+		29C2B4CB1C182FFD0082D855 /* DataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataController.h; sourceTree = "<group>"; };
+		29C2B4CC1C182FFD0082D855 /* DataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +99,8 @@
 		29B5D01F1B5BBC7600AA35F7 /* TimerTests */ = {
 			isa = PBXGroup;
 			children = (
+				29C2B4CB1C182FFD0082D855 /* DataController.h */,
+				29C2B4CC1C182FFD0082D855 /* DataController.m */,
 				290E24651C166161004CAC00 /* Phase.h */,
 				290E24661C166161004CAC00 /* Phase.m */,
 				29794A6F1C03277900BCE635 /* Workout.h */,
@@ -251,6 +256,7 @@
 				290E246A1C16E246004CAC00 /* TableViewController.m in Sources */,
 				29B5D0291B5BBC7600AA35F7 /* ViewController.m in Sources */,
 				29B5D0261B5BBC7600AA35F7 /* AppDelegate.m in Sources */,
+				29C2B4CD1C182FFD0082D855 /* DataController.m in Sources */,
 				29794A711C03277900BCE635 /* Workout.m in Sources */,
 				29B5D0231B5BBC7600AA35F7 /* main.m in Sources */,
 			);
