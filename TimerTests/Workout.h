@@ -13,6 +13,7 @@
 
 @property (strong,nonatomic) NSMutableArray* phases;
 @property (nonatomic) int currentPhase;
+@property (nonatomic) bool completed;
 
 - (void)addWorkout: (NSString*)title withTime: (int)time;
 - (NSString*) currentTitle;

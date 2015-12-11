@@ -8,7 +8,65 @@
 
 #import "DataController.h"
 
+static NSString* const FILE_NAME = @"C25KUserData.dat";
+
+@interface DataController()
+-(NSURL*)getAppDirectory;
+@end
+
 @implementation DataController
+
+-(NSURL*)getAppDirectory
+{
+    NSFileManager* nsfm = [NSFileManager defaultManager];
+    NSArray* possibleURLs = [nsfm URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask];
+    
+    NSURL* appSupportDir = nil;
+    NSURL* appDir = nil;
+    
+    if ( [possibleURLs count] >= 1 )
+    {
+        appSupportDir = [possibleURLs objectAtIndex:0];
+    }
+    
+    if (appSupportDir) {
+        NSString* appBundleID = [[NSBundle mainBundle] bundleIdentifier];
+        appDir = [appSupportDir URLByAppendingPathComponent:appBundleID];
+        
+        if (![nsfm createDirectoryAtURL:appDir withIntermediateDirectories:YES attributes:nil error:nil])
+        {
+            appDir = nil;
+        }
+        
+    }
+    
+    NSLog( @"%@", appDir);
+    
+    return appDir;
+}
+
+-(NSArray*)readCompletionInfo
+{
+    NSURL* fileLocation = [[self getAppDirectory] URLByAppendingPathComponent:FILE_NAME];
+    
+    // read the data
+    NSArray* completionInfo = [NSArray arrayWithContentsOfURL:fileLocation];
+    
+    return completionInfo;
+}
+
+-(bool)writeCompletionInfo:(NSArray*)completionInfo
+{
+    bool result = NO;
+    
+    if (completionInfo != nil)
+    {
+        NSURL* fileLocation = [[self getAppDirectory] URLByAppendingPathComponent:FILE_NAME];
+        result = [completionInfo writeToURL:fileLocation atomically:YES];
+    }
+    
+    return result;
+}
 
 -(NSArray<Workout*>*)getWorkoutData
 {
@@ -68,7 +126,7 @@
     
     NSLog(@"Data read from file");
     
+    // Return copy of the array
     return [workouts copy];
-
 }
 @end

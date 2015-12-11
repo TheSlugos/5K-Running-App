@@ -174,6 +174,8 @@
             _lblStage.text = @"Exercise Completed";
             
             _btnTimer.hidden = YES;
+            
+            _thisWorkout.completed = YES;
         }
         else
         {

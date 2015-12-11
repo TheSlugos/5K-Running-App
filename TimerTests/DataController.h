@@ -12,4 +12,7 @@
 @interface DataController : NSObject
 
 -(NSArray<Workout*>*)getWorkoutData;
+-(NSArray*)readCompletionInfo;
+-(bool)writeCompletionInfo:(NSArray*)completionInfo;
+
 @end

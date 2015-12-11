@@ -45,7 +45,46 @@
         _workouts = [_dc getWorkoutData];
     }
     
-    // [self readExerciseData];
+    // get workout completion info
+    NSArray* completionInfo = [_dc readCompletionInfo];
+    
+    if ( completionInfo == nil)
+    {
+        NSLog(@"File does not exist writing new file");
+        NSMutableArray *tmpArray = [[NSMutableArray alloc] initWithCapacity:1];
+        // get completion info from Workouts
+        for (int i = 0; i < [_workouts count]; i++)
+        {
+            [tmpArray addObject:[NSNumber numberWithBool:[_workouts objectAtIndex:i].completed]];
+        }
+        
+        completionInfo = [NSArray arrayWithArray:tmpArray];
+        
+        // as there was no file write this data to the file
+        bool result = [_dc writeCompletionInfo:completionInfo];
+        
+        if (result)
+        {
+            NSLog(@"File write successful");
+        }
+        else
+        {
+            NSLog(@"File write failed");
+        }
+    }
+    else
+    {
+        NSLog(@"Reading from existing file");
+        // store completion info into Workouts
+        if ([completionInfo count] == [_workouts count])
+        {
+            // have the correct amount
+            for (int i = 0; i < [completionInfo count]; i++)
+            {
+                [_workouts objectAtIndex:i].completed = [[completionInfo objectAtIndex:i] boolValue];
+            }
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -73,6 +112,15 @@
     int day = (int)indexPath.row % 3 + 1;
     
     cell.textLabel.text = [NSString stringWithFormat:@"Week %d, Day %d", week, day];
+    
+    if  ([_workouts objectAtIndex:indexPath.row].completed == NO)
+    {
+        cell.textLabel.textColor = [UIColor redColor];
+    }
+    else
+    {
+        cell.textLabel.textColor = [UIColor greenColor];
+    }
     
     return cell;
 }

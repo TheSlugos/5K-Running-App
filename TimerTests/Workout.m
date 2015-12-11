@@ -15,6 +15,7 @@
     {
         _currentPhase = 0;
         _phases = [[NSMutableArray alloc] initWithCapacity:1];
+        _completed = NO;
     }
     
     return self;
