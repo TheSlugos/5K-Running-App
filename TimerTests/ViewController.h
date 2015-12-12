@@ -12,6 +12,7 @@
 @interface ViewController : UIViewController
 // Today's workout
 @property (strong, nonatomic) Workout* thisWorkout;
+@property (nonatomic) bool workoutFinished;
 
 @end
 

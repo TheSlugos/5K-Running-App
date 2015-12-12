@@ -38,6 +38,7 @@
 -(void)updateTimerLabel:(NSTimer*)theTimer;
 -(void)resetTimer;
 -(NSString*)timeAsString:(int)time;
+- (IBAction)btnReturn_Click:(UIButton *)sender;
 
 @end
 
@@ -55,6 +56,12 @@
     sndPath = [[NSBundle mainBundle] pathForResource:@"buzzer" ofType:@"wav"];
     sndURL = [NSURL fileURLWithPath:sndPath];
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)sndURL, &_sndBuzzer);
+    
+    // set finished flag
+    _workoutFinished = NO;
+    
+    // reset currentphase of workout, just in case
+    //_thisWorkout.currentPhase = 0;
     
     [self resetTimer];
 }
@@ -175,7 +182,8 @@
             
             _btnTimer.hidden = YES;
             
-            _thisWorkout.completed = YES;
+            // workout finished so set flag
+            _workoutFinished = YES;
         }
         else
         {
@@ -209,6 +217,11 @@
     long seconds = time % 60;
     
     return [NSString stringWithFormat:@"%02ld:%02ld", (long)minutes, (long)seconds];
+}
+
+- (IBAction)btnReturn_Click:(UIButton *)sender {
+    NSLog(@"Reset Timer");
+    [self resetTimer];
 }
 
 @end

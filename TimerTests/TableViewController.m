@@ -17,7 +17,9 @@
 // Workouts
 @property (strong, nonatomic) NSArray<Workout*>* workouts;
 @property (strong, nonatomic) DataController* dc;
+@property (nonatomic) long selectedRow;
 
+-(NSArray*)writeCompletionInfo;
 @end
 
 @implementation TableViewController
@@ -51,26 +53,7 @@
     if ( completionInfo == nil)
     {
         NSLog(@"File does not exist writing new file");
-        NSMutableArray *tmpArray = [[NSMutableArray alloc] initWithCapacity:1];
-        // get completion info from Workouts
-        for (int i = 0; i < [_workouts count]; i++)
-        {
-            [tmpArray addObject:[NSNumber numberWithBool:[_workouts objectAtIndex:i].completed]];
-        }
-        
-        completionInfo = [NSArray arrayWithArray:tmpArray];
-        
-        // as there was no file write this data to the file
-        bool result = [_dc writeCompletionInfo:completionInfo];
-        
-        if (result)
-        {
-            NSLog(@"File write successful");
-        }
-        else
-        {
-            NSLog(@"File write failed");
-        }
+        completionInfo = [self writeCompletionInfo];
     }
     else
     {
@@ -85,6 +68,9 @@
             }
         }
     }
+    
+    // set selected row
+    _selectedRow = -1;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -123,6 +109,61 @@
     }
     
     return cell;
+}
+-(IBAction)unwindToList:(UIStoryboardSegue*)sender
+{
+    ViewController* exerciseView = (ViewController*)sender.sourceViewController;
+    
+    NSLog(@"Selected row was %ld", _selectedRow);
+    
+    if (exerciseView.workoutFinished) {
+        NSLog(@"Workout done, write to file");
+        
+        // set workout as done
+        [_workouts objectAtIndex:_selectedRow].completed = YES;
+        
+        NSIndexPath* indexPath = [NSIndexPath indexPathForRow:_selectedRow inSection:0];
+        NSLog(@"Row %ld", indexPath.row);
+        [[self tableView] cellForRowAtIndexPath: indexPath].textLabel.textColor = [UIColor greenColor];
+        [self writeCompletionInfo];
+    }
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([_workouts objectAtIndex:indexPath.row].completed)
+    {
+        cell.textLabel.textColor = [UIColor greenColor];
+    }
+    else
+    {
+        cell.textLabel.textColor = [UIColor redColor];
+    }
+}
+
+-(NSArray*)writeCompletionInfo
+{
+    NSMutableArray* completionInfo = [[NSMutableArray alloc] initWithCapacity:1];
+    
+    // get completion info from Workouts
+    for (int i = 0; i < [_workouts count]; i++)
+    {
+        [completionInfo addObject:[NSNumber numberWithBool:[_workouts objectAtIndex:i].completed]];
+    }
+    
+    // write this data to the file
+    bool result = [_dc writeCompletionInfo:completionInfo];
+    
+    if (result)
+    {
+        NSLog(@"File write successful");
+    }
+    else
+    {
+        NSLog(@"File write failed");
+    }
+
+    return [NSArray arrayWithArray:completionInfo];
 }
 
 /*
@@ -173,7 +214,8 @@
         ViewController* exerciseView = (ViewController*)[segue destinationViewController];
         
         // Set the current workout to the one selected
-        exerciseView.thisWorkout = [_workouts objectAtIndex:indexPath.row];
+        _selectedRow = indexPath.row;
+        exerciseView.thisWorkout = [_workouts objectAtIndex:_selectedRow];
     }
 }
 

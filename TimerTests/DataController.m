@@ -50,7 +50,7 @@ static NSString* const FILE_NAME = @"C25KUserData.dat";
     NSURL* fileLocation = [[self getAppDirectory] URLByAppendingPathComponent:FILE_NAME];
     
     // read the data
-    NSArray* completionInfo = [NSArray arrayWithContentsOfURL:fileLocation];
+    NSMutableArray* completionInfo = [NSMutableArray arrayWithContentsOfURL:fileLocation];
     
     return completionInfo;
 }
